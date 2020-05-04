@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Status
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        refreshingText="Update...">
+    </ion-refresher-content>
+    </ion-refresher>
+    <ion-card class="welcom-card">
+      <img src="/assets/favicon.png" alt="" class="img-dim"/>
+      <ion-card-header>
+        {{arduinoService.isConnected}}
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          {{!connectionState ? 'Device not connected' : 'DeviceConnected'}}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="connectionState">
+        It's time to go!
+      </ion-card-content>
+      <ion-card-content *ngIf="!connectionState">
+        <ion-button color="primary"
+                    expand="block"
+                    (click)="connect()">
+          <ion-icon name="bluetooth"></ion-icon>
+          Connect!
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

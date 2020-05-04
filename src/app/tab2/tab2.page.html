@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Emergency numbers
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center">
+  <ion-chip (click)="syncData()">
+    <ion-icon name="shuffle"></ion-icon>
+    <ion-label>{{getSyncDate()}}</ion-label>
+  </ion-chip>
+</div>
+<ion-list>
+  <ion-item-sliding *ngFor="let contact of contactArr; let i = index" [attr.data-index]="i">
+    <ion-item-options side="end" (ionSwipe)="delete(contact)">
+      <ion-item-option (click)="delete(contact)" color="danger" expandable >
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+    <ion-item>
+    <ion-label>
+      <ion-icon name="checkmark" *ngIf="contact.main"></ion-icon>
+      <h2>{{contact.name}}</h2>
+      <p>{{contact.number}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-item-options side="start" (ionSwipe)="openModalContattoForModify(contact)">
+  <ion-item-option (click)="openModalContattoForModify(contact)" expandable>
+    <ion-icon name="brush"></ion-icon>
+  </ion-item-option>
+</ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+  <ion-fab vertical="bottom"
+           horizontal="end"
+           slot="fixed">
+    <ion-fab-button (click)="openModalContatto(contactArr)">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

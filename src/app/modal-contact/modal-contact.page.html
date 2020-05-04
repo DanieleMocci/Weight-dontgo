@@ -1,0 +1,27 @@
+
+<ion-content>
+  <ion-item>
+    <ion-label>{{getTitle()}}</ion-label>
+    <ion-button size="small" fill="clear" slot="end" (click)="dismiss()">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-card>
+    <form (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input required="true" [(ngModel)]="contactData.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Number</ion-label>
+      <ion-input required="true" [(ngModel)]="contactData.number" name="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Priority number:</ion-label>
+      <ion-checkbox color="primary" [(ngModel)]="contactData.main" name="main"></ion-checkbox>
+      <ion-label *ngIf="contactData.main">This is the priority contact! Insert your number for better security</ion-label>
+    </ion-item>
+    <ion-button  type="submit" expand="block">{{getLabelButton()}}</ion-button>
+  </form>
+  </ion-card>
+</ion-content>

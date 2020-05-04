@@ -1,0 +1,8 @@
+{
+  "name": "WeightDontGo",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
